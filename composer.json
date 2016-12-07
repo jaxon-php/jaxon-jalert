@@ -1,7 +1,7 @@
 {
     "name": "jaxon-php/jaxon-jalert",
     "type": "library",
-    "description": "Modal, alert, and confirmation dialogs for Jaxon, with the jAlert jQuery plugin",
+    "description": "Alert and confirmation dialogs for Jaxon, with the jAlert jQuery plugin",
     "authors": [
         {"name": "Thierry Feuzeu"}
     ],

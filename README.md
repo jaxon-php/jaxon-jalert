@@ -1,13 +1,13 @@
 jAlert for Jaxon
 ================
 
-This package implements javascript modal, alert and confirmation dialogs in Jaxon applications using the jQuery jAlert plugin.
+This package implements javascript alert and confirmation dialogs in Jaxon applications using the jQuery jAlert plugin.
 http://flwebsites.biz/jAlert/.
 
 Features
 --------
 
-- Enrich the Jaxon response modal, alert and confirmation dialogs.
+- Enrich the Jaxon response alert and confirmation dialogs.
 - Automatically insert the Javascript and CSS file of the jAlert library into the HTML page.
 
 Installation
@@ -30,8 +30,8 @@ Configuration
 
 By default the plugin loads the version 4.5.1 of Javascript and CSS files from the Jaxon website.
 
-- lib.jaxon-php.org/jAlert/4.5.1/jAlert.min.js
-- lib.jaxon-php.org/jAlert/4.5.1/jAlert.css
+- https://lib.jaxon-php.org/jAlert/4.5.1/jAlert.min.js
+- https://lib.jaxon-php.org/jAlert/4.5.1/jAlert.css
 
 This can be disabled by setting the `assets.include.jalert` option to `false`.
 
@@ -40,17 +40,18 @@ Usage
 
 This example shows how to print a notification.
 ```php
-function myFunction()
+class HelloWorld
 {
-    $response = new \Jaxon\Response\Response();
+    public function sayHello($text)
+    {
+        $xResponse = new Response();
+        $xResponse->assign('div2', 'innerHTML', $text);
 
-    // Process the request
-    // ...
+        // Print a notification with Bootbox
+        $response->jalert->success("You did it!!!");
 
-    // Print a notification with Bootbox
-    $response->jalert->success("You did it!!!");
-
-    return $response;
+        return $xResponse;
+    }
 }
 ```
 
@@ -60,6 +61,11 @@ public function info($message, $title = null);
 public function success($message, $title = null);
 public function warning($message, $title = null);
 public function error($message, $title = null);
+```
+
+This plugin can also be used to add confirmation questions to Jaxon calls.
+```php
+    <button onclick="<?php echo jr::call('HelloWorld.sayHello', jr::html('DemoDiv'))->confirm('Really?') ?>">Click Me</button>
 ```
 
 Contribute
